@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfModbusTestApp1", "WpfModbusTestApp1.csproj", "{8F6759A6-F8BC-492C-A0DA-69CF6EF6271F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F6759A6-F8BC-492C-A0DA-69CF6EF6271F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F6759A6-F8BC-492C-A0DA-69CF6EF6271F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F6759A6-F8BC-492C-A0DA-69CF6EF6271F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F6759A6-F8BC-492C-A0DA-69CF6EF6271F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B95FA77B-5D25-4149-B056-0DF146481EA1}
+	EndGlobalSection
+EndGlobal
