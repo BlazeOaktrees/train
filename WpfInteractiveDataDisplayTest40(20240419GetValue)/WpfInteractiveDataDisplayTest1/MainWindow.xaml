@@ -1,0 +1,97 @@
+﻿<Window x:Class="WpfInteractiveDataDisplayTest1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d3="clr-namespace:InteractiveDataDisplay.WPF;assembly=InteractiveDataDisplay.WPF"
+        xmlns:local="clr-namespace:WpfInteractiveDataDisplayTest1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1200">
+    <Window.Resources>
+        <local:VisibilityToCheckedConverter x:Key="VisibilityToCheckedConverter"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:MainViewModle/>
+    </Window.DataContext>
+    <Grid Name="GridRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+    <Grid x:Name="LayoutRoot" Grid.Row="8" Grid.Column="2" Background="White">
+        <d3:Chart Name="plo"  PlotHeight="{Binding iHeight,UpdateSourceTrigger=PropertyChanged}"
+                  PlotOriginX="{Binding iOriginX,UpdateSourceTrigger=PropertyChanged}"
+                  PlotOriginY="{Binding iOriginY,UpdateSourceTrigger=PropertyChanged}"
+                  PlotWidth="{Binding iWidth,UpdateSourceTrigger=PropertyChanged}">
+            <d3:Chart.Title>
+                <TextBlock HorizontalAlignment="Center" FontSize="18" Margin="0,5,0,5">Line graph legend sample</TextBlock>
+            </d3:Chart.Title>
+                
+                <Grid Name="Te">
+                    <d3:Axis Name="AxisTe" AxisOrientation="Right"></d3:Axis>
+                </Grid>
+
+            </d3:Chart>
+    </Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="8" MouseMove="StackPanel_MouseMove">
+            <Button Content="ChangeDisplay" Command="{Binding ChangeDisplay}"/>
+            <Button Content="ChangeDisplay1" Command="{Binding ChangeDisplay1}"/>
+            <Button Content="Open" Click="Button_Click"/>
+            <Button Content="Change" Click="Change_Click"/>
+            <Button Content="Export" Command="{Binding CommandExport}"/>
+            <TextBox Name="tbDisplay" Height="30" Margin="0,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="629"/>
+            
+        </StackPanel>
+        <TabControl>
+            <TabItem Header="header1">
+                <GroupBox Header="TestSave" Background="Bisque">
+                <Grid x:Name="gr">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="350"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Content="Chart 17" Grid.Column="2" HorizontalAlignment="Center"></Label>
+                    <Label Content="Chart 18" Grid.Column="3" HorizontalAlignment="Center"></Label>
+                    <Label Content="Chart 19" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"></Label>
+                    <Label Content="Chart 20" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Center"></Label>
+                </Grid>
+                </GroupBox>
+            </TabItem>
+            <TabItem Header="header2">
+                <ScrollViewer  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+                    <WrapPanel x:Name="wp" MaxWidth="1000">
+
+                    </WrapPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Column="2">
+            <Label Content="X:" Margin="10"/>
+            <Label Content="{Binding dCurrentX,UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+            <Label Content="Y:" Margin="10"/>
+            <Label Content="{Binding dCurrentY,UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>
