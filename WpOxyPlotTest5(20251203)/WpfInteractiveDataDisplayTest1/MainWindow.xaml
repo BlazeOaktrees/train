@@ -1,0 +1,65 @@
+﻿<Window x:Class="WpfInteractiveDataDisplayTest1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:local="clr-namespace:WpfInteractiveDataDisplayTest1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1200">
+    <Window.Resources>
+        <local:VisibilityToCheckedConverter x:Key="VisibilityToCheckedConverter"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <local:MainViewModle/>
+    </Window.DataContext>
+    <Grid Name="GridRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+    
+        <StackPanel Orientation="Horizontal" Grid.Row="8" MouseMove="StackPanel_MouseMove">
+            <Button Content="ChangeDisplay" Command="{Binding ChangeDisplay}"/>
+            <Button Content="ChangeDisplay1" Command="{Binding CMutify}"/>
+            <Button Content="Open" Click="Button_Click"/>
+            <Button Content="Change" Click="Change_Click"/>
+            <Button Content="Export" Command="{Binding CommandExport}"/>
+            <TextBox Name="tbDisplay" Height="30" Margin="0,10,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="629"/>
+            
+        </StackPanel>
+        <TabControl>
+            <TabItem Header="header1">
+                <Grid>
+                    <oxy:PlotView Model="{Binding MyPlotModel}"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="header2">
+                <ScrollViewer  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
+                    <WrapPanel x:Name="wp" MaxWidth="1000">
+
+                    </WrapPanel>
+                </ScrollViewer>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Column="2">
+            <Label Content="X:" Margin="10"/>
+            <Label Content="{Binding dCurrentX,UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+            <Label Content="Y:" Margin="10"/>
+            <Label Content="{Binding dCurrentY,UpdateSourceTrigger=PropertyChanged}" Margin="10"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>
